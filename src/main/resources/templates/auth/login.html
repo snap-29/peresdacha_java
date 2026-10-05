@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{layout :: head('Вход')}"></head><body><main class="login"><h1>Вход в Task Manager</h1>
+<p th:if="${param.error}" class="error">Неверный email или пароль.</p><p th:if="${param.logout}">Вы вышли из системы.</p>
+<form th:action="@{/login}" method="post"><label>Email<input type="email" name="username" required autocomplete="username"></label><label>Пароль<input type="password" name="password" required autocomplete="current-password"></label><button>Войти</button></form>
+<p>Аккаунт можно создать через REST: POST /auth/register.</p></main></body></html>

@@ -1,0 +1,4 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{layout :: head('Детали задачи')}"></head><body><nav th:replace="~{layout :: navbar}"></nav><main><h1 th:text="${task.title}"></h1><p class="description" th:text="${task.description}"></p><dl><dt>Приоритет</dt><dd th:text="${task.priority}"></dd><dt>Статус</dt><dd th:text="${task.status}"></dd><dt>Создана</dt><dd th:text="${task.createdAt}"></dd></dl><a th:href="@{/web/tasks/{id}/edit(id=${task.id})}">Редактировать</a> · <a th:href="@{/web/tasks}">К списку</a></main></body></html>

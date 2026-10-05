@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{layout :: head('Форма задачи')}"></head><body><nav th:replace="~{layout :: navbar}"></nav><main><h1 th:text="${taskId == null ? 'Новая задача' : 'Редактирование задачи'}"></h1>
+<form th:object="${taskRequest}" th:action="${taskId == null} ? @{/web/tasks} : @{/web/tasks/{id}(id=${taskId})}" method="post">
+<label>Название<input th:field="*{title}" maxlength="255"></label><p class="error" th:errors="*{title}"></p>
+<label>Описание<textarea th:field="*{description}" maxlength="10000" rows="5"></textarea></label><p class="error" th:errors="*{description}"></p>
+<label>Приоритет<select th:field="*{priority}"><option th:each="p : ${priorities}" th:value="${p}" th:text="${p}"></option></select></label><p class="error" th:errors="*{priority}"></p>
+<label>Статус<select th:field="*{status}"><option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option></select></label><p class="error" th:errors="*{status}"></p>
+<button>Сохранить</button> <a th:href="@{/web/tasks}">Отмена</a></form></main></body></html>
